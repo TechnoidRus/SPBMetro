@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+  <appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </Console>
+
+    <File name="Exception" fileName="logs/Exception.log">
+      <MarkerFilter marker="Exception" onMatch="ACCEPT" onMismatch="DENY"/>
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+    </File>
+    <File name="SearchStations" fileName="logs/SearchStation.log">
+      <MarkerFilter marker="Search" onMatch="ACCEPT" onMismatch="DENY"/>
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+    </File>
+    <File name="NotFound" fileName="logs/NotFoundStations.log">
+      <MarkerFilter marker="NoFound" onMatch="ACCEPT" onMismatch="DENY"/>
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+    </File>
+  </appenders>
+
+  <loggers>
+    <root level="trace">
+      <appender-ref ref="Exception" level="error"/>
+      <appender-ref ref="SearchStations" level="info"/>
+      <appender-ref ref="NotFound" level="warn"/>
+    </root>
+  </loggers>
+</configuration>
